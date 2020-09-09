@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rps
+  name: rps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rps
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: rps
+    spec:
+      containers:
+      - image: mugunthan/mynewpublic:latest
+        name: rps
+        ports:
+        - containerPort: 8080
+
+####Nodeport service for rps
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: rps-service
+spec:
+  type: NodePort
+  ports:
+    - port: 32000
+      targetPort: 8080
+  selector:
+    app: rps
