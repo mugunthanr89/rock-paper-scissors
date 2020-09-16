@@ -15,14 +15,14 @@ node{
     }
     
     stage("Docker image Build"){
-        sh "docker build -t mugunthan/mynewpublic:v5 ."
+        sh "docker build -t mugunthan/mynewpublic:v6 ."
     }
     
     stage("Docker push to mypublicrepo"){
         withCredentials([string(credentialsId: 'mydocker_hub_passwd', variable: 'mydocker_hub_passwd')]) {
         sh "docker login -u mugunthan -p ${mydocker_hub_passwd}"
     } 
-        sh "docker push mugunthan/mynewpublic:v5"
+        sh "docker push mugunthan/mynewpublic:v6"
     }
         
     }
