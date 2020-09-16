@@ -14,7 +14,7 @@ node{
         }
     }
     
-    stage("Docker image Build"){
+    stage("Docker image Builld"){
         sh "docker build -t mugunthan/mynewpublic:v7 ."
     }
     
